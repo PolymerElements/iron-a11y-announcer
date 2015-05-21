@@ -1,0 +1,29 @@
+{
+  "name": "iron-a11y-announcer",
+  "version": "0.9.0",
+  "description": "A singleton element that simplifies announcing text to screen readers.",
+  "keywords": [
+    "web-components",
+    "web-component",
+    "polymer",
+    "a11y",
+    "live"
+  ],
+  "authors": [
+    "The Polymer Authors"
+  ],
+  "main": "iron-a11y-announcer.html",
+  "license": "MIT",
+  "dependencies": {
+    "polymer": "polymer/polymer#^0.9.0"
+  },
+  "devDependencies": {
+    "iron-component-page": "polymerelements/iron-component-page#^0.9.0",
+    "iron-test-helpers": "polymerelements/iron-test-helpers#^0.9.0",
+    "paper-button": "polymerelements/paper-button#^0.9.0",
+    "paper-styles": "polymerelements/paper-styles#^0.9.0",
+    "test-fixture": "polymerelements/test-fixture#^0.9.0",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0",
+    "web-component-tester": "*"
+  }
+}
