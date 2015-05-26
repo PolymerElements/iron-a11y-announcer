@@ -4,7 +4,6 @@
   "description": "A singleton element that simplifies announcing text to screen readers.",
   "keywords": [
     "web-components",
-    "web-component",
     "polymer",
     "a11y",
     "live"
