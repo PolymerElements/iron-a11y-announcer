@@ -11,6 +11,10 @@
   "authors": [
     "The Polymer Authors"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/PolymerElements/iron-a11y-announcer.git"
+  },
   "main": "iron-a11y-announcer.html",
   "license": "http://polymer.github.io/LICENSE.txt",
   "dependencies": {
