@@ -11,7 +11,7 @@ Example:
     Polymer({
       is: 'x-chatty',
       attached: function() {
-        // This will create the singlton element if it has not
+        // This will create the singleton element if it has not
         // been created yet:
         Polymer.IronA11yAnnouncer.requestAvailability();
       }
