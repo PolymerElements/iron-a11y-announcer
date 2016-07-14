@@ -21,19 +21,20 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../iron-a11y-announcer.html">
 
 <dom-module id="x-announces">
-  <style>
-    :host {
-      display: block;
-      position: relative;
-      padding: 1em 0;
-    }
-
-    paper-button {
-      background: #4285f4;
-      color: #fff;
-    }
-  </style>
   <template>
+    <style>
+      :host {
+        display: block;
+        position: relative;
+        padding: 1em 0;
+      }
+
+      paper-button {
+        background: #4285f4;
+        color: #fff;
+      }
+    </style>
+
     <paper-button on-tap="_onTapAnnounce" raised>Announce</paper-button>
     <span id="content" aria-hidden="true">
       <content></content>
