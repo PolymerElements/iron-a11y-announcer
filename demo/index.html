@@ -52,11 +52,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           });
 
           function _announce() {
-            Polymer.IronA11yAnnouncer.instance.fire('iron-announce', {
-              text: input.value.trim()
-            }, {
-              bubbles: true
-            });
+            Polymer.IronA11yAnnouncer.instance.announce(input.value.trim());
           }
         </script>
       </template>
