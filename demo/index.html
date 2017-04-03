@@ -43,7 +43,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <paper-button raised onclick="_announce()">Announce</paper-button>
 
         <script>
-          document.addEventListener('HTMLImportsLoaded', function() {
+          window.addEventListener('WebComponentsReady', function() {
             // Initialize the announcer.
             Polymer.IronA11yAnnouncer.requestAvailability();
 
