@@ -7,7 +7,7 @@ Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS
 -->
 
-<link rel="import" href="../../polymer/polymer.html">
+<link rel="import" href="../../polymer/polymer-element.html">
 <link rel="import" href="../iron-a11y-announcer.html">
 <link rel="import" href="../../paper-button/paper-button.html">
 
@@ -26,30 +26,33 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
   </template>
   <script>
-    Polymer({
-      is: 'x-announces',
+    (function() {
+      'use strict';
 
-      hostAttributes: {
-        'aria-hidden': 'true'
-      },
-
-      properties: {
-        message: {
-          type: String
+      class XAnnounces extends Polymer.Element {
+        static get is() { return 'x-announces'; }
+        static get properties() {
+          return {
+            message: {
+              type: String
+            }
+          };
         }
-      },
+        connectedCallback() {
+          super.connectedCallback();
+          this._ensureAttribute('aria-hidden', true);
+          Polymer.IronA11yAnnouncer.requestAvailability();
+        }
 
-      attached: function() {
-        Polymer.IronA11yAnnouncer.requestAvailability();
-      },
-
-      _onTapAnnounce: function() {
-        this.fire('iron-announce', {
-          text: this.message.trim()
-        }, {
-          bubbles: true
-        });
+        _onTapAnnounce() {
+          this.dispatchEvent(new CustomEvent('iron-announce', {
+            bubbles: true,
+            detail: { text: this.message.trim() }
+          }));
+        }
       }
-    });
+
+      window.customElements.define(XAnnounces.is, XAnnounces);
+    })();
   </script>
 </dom-module>

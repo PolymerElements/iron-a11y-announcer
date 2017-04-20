@@ -8,7 +8,7 @@ Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 -->
 
-<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../polymer/polymer-element.html">
 
 <!--
 `iron-a11y-announcer` is a singleton element that is intended to add a11y
@@ -18,25 +18,25 @@ in the announcing element.
 
 Example:
 
-    Polymer({
-
-      is: 'x-chatty',
-
-      attached: function() {
+    class XChatty extends Polymer.Element {
+      static get is() { return 'x-chatty'; }
+      attached() {
         // This will create the singleton element if it has not
         // been created yet:
         Polymer.IronA11yAnnouncer.requestAvailability();
       }
-    });
+    }
+    window.customElements.define(XChatty.is, XChatty);
 
 After the `iron-a11y-announcer` has been made available, elements can
 make announces by firing bubbling `iron-announce` events.
 
 Example:
 
-    this.fire('iron-announce', {
-      text: 'This is an announcement!'
-    }, { bubbles: true });
+    this.dispatchEvent(new CustomEvent('iron-announce', {
+      bubbles: true,
+      detail: { text: 'This is an announcement!' }
+    }));
 
 Note: announcements are only audible if you have a screen reader enabled.
 
@@ -57,68 +57,67 @@ Note: announcements are only audible if you have a screen reader enabled.
   </template>
 
   <script>
-
     (function() {
       'use strict';
 
-      Polymer.IronA11yAnnouncer = Polymer({
-        is: 'iron-a11y-announcer',
+      class IronA11yAnnouncer extends Polymer.Element {
+        static get is() { return 'iron-a11y-announcer'; }
+        static get properties() {
+          return {
 
-        properties: {
+            /**
+             * The value of mode is used to set the `aria-live` attribute
+             * for the element that will be announced. Valid values are: `off`,
+             * `polite` and `assertive`.
+             */
+            mode: {
+              type: String,
+              value: 'polite'
+            },
 
-          /**
-           * The value of mode is used to set the `aria-live` attribute
-           * for the element that will be announced. Valid values are: `off`,
-           * `polite` and `assertive`.
-           */
-          mode: {
-            type: String,
-            value: 'polite'
-          },
-
-          _text: {
-            type: String,
-            value: ''
+            _text: {
+              type: String,
+              value: ''
+            }
+          };
+        }
+        static requestAvailability() {
+          if (!Polymer.IronA11yAnnouncer.instance) {
+            Polymer.IronA11yAnnouncer.instance = new Polymer.IronA11yAnnouncer();
           }
-        },
 
-        created: function() {
+          document.body.appendChild(Polymer.IronA11yAnnouncer.instance);
+        }
+
+        constructor() {
+          super();
           if (!Polymer.IronA11yAnnouncer.instance) {
             Polymer.IronA11yAnnouncer.instance = this;
           }
 
-          document.body.addEventListener('iron-announce', this._onIronAnnounce.bind(this));
-        },
+          document.body.addEventListener('iron-announce', (event) => {
+            if (event.detail && event.detail.text) {
+              this.announce(event.detail.text);
+            }
+          });
+        }
 
         /**
          * Cause a text string to be announced by screen readers.
          *
          * @param {string} text The text that should be announced.
          */
-        announce: function(text) {
+        announce(text) {
           this._text = '';
-          this.async(function() {
+          this.async(() => {
             this._text = text;
           }, 100);
-        },
-
-        _onIronAnnounce: function(event) {
-          if (event.detail && event.detail.text) {
-            this.announce(event.detail.text);
-          }
         }
-      });
-
+      }
+      Polymer.IronA11yAnnouncer = IronA11yAnnouncer;
       Polymer.IronA11yAnnouncer.instance = null;
 
-      Polymer.IronA11yAnnouncer.requestAvailability = function() {
-        if (!Polymer.IronA11yAnnouncer.instance) {
-          Polymer.IronA11yAnnouncer.instance = document.createElement('iron-a11y-announcer');
-        }
-
-        document.body.appendChild(Polymer.IronA11yAnnouncer.instance);
-      };
+      window.customElements.define(IronA11yAnnouncer.is, IronA11yAnnouncer);
     })();
-
   </script>
 </dom-module>
