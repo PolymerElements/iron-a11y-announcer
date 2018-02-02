@@ -1,0 +1,10 @@
+{
+  "name": "@polymer/iron-a11y-announcer",
+  "private": true,
+  "description": "A singleton element that simplifies announcing text to screen readers.",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/PolymerElements/iron-a11y-announcer.git"
+  },
+  "license": "http://polymer.github.io/LICENSE.txt"
+}
