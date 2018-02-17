@@ -51,15 +51,15 @@ declare namespace Polymer {
      */
     mode: string|null|undefined;
     _text: string|null|undefined;
-    created(): any;
+    created(): void;
 
     /**
      * Cause a text string to be announced by screen readers.
      *
      * @param text The text that should be announced.
      */
-    announce(text: string): any;
-    _onIronAnnounce(event: any): any;
+    announce(text: string): void;
+    _onIronAnnounce(event: any): void;
   }
 }
 
