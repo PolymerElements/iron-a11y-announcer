@@ -36,12 +36,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       });
 
       test('announces when there is an iron-announce event', function() {
-        var event = new CustomEvent('iron-announce', {
-          bubbles: true,
-          detail: {
-            text: 'foo'
-          }
-        });
+        var event = new CustomEvent(
+            'iron-announce', {bubbles: true, detail: {text: 'foo'}});
 
         sinon.spy(announcer, 'announce');
 
