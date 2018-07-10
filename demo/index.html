@@ -24,33 +24,26 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <script type="module" src="../../paper-button/paper-button.js"></script>
   <script type="module" src="./x-announces.js"></script>
   <script type="module" src="../iron-a11y-announcer.js"></script>
-  <!-- FIXME(polymer-modulizer):
-        These imperative modules that innerHTML your HTML are
-        a hacky way to be sure that any mixins in included style
-        modules are ready before any elements that reference them are
-        instantiated, otherwise the CSS @apply mixin polyfill won't be
-        able to expand the underlying CSS custom properties.
-        See: https://github.com/Polymer/polymer-modulizer/issues/154
-        -->
-    <script type="module">
-const $_documentContainer = document.createElement('template');
-
-$_documentContainer.innerHTML = `<custom-style>
-    <style is="custom-style" include="demo-pages-shared-styles">
-      input {
-        margin-right: 20px;
-      }
-    </style>
-  </custom-style>`;
-
-document.body.appendChild($_documentContainer.content);
-</script>
+  <script type="module">
+      import {html} from '@polymer/polymer/lib/utils/html-tag.js';
+      const template = html`
+      <custom-style>
+        <style is="custom-style" include="demo-pages-shared-styles">
+          input {
+            margin-right: 20px;
+          }
+        </style>
+      </custom-style>
+      `;
+      document.body.appendChild(template.content);
+  </script>
 </head>
 <body>
   <script type="module">
-const $_documentContainer = document.createElement('template');
+    const $_documentContainer = document.createElement('template');
 
-$_documentContainer.innerHTML = `<div class="vertical-section-container centered">
+    $_documentContainer.innerHTML =
+        `<div class="vertical-section-container centered">
     <p><b>Note</b>: in order to hear the announcements, be sure to turn on your favorite screen reader!</p>
 
     <h4>Announcer used directly on the main document</h4>
@@ -89,8 +82,8 @@ $_documentContainer.innerHTML = `<div class="vertical-section-container centered
     </demo-snippet>
   </div>`;
 
-document.body.appendChild($_documentContainer.content);
-</script>emplate>
+    document.body.appendChild($_documentContainer.content);
+  </script>
     </demo-snippet>
   </div>
 </body>
