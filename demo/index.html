@@ -60,11 +60,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           });
 
           window._announce = function() {
-            IronA11yAnnouncer.instance.fire('iron-announce', {
-              text: input.value.trim()
-            }, {
-              bubbles: true
-            });
+            IronA11yAnnouncer.instance.fire('iron-announce',
+                {text: input.value.trim()}, {bubbles: true});
           }
         </script>
       </template>
