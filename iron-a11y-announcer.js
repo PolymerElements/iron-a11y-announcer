@@ -10,7 +10,7 @@ found at http://polymer.github.io/PATENTS.txt
 */
 import '@polymer/polymer/polymer-legacy.js';
 
-import {Polymer as Polymer$0} from '@polymer/polymer/lib/legacy/polymer-fn.js';
+import {Polymer} from '@polymer/polymer/lib/legacy/polymer-fn.js';
 import {html} from '@polymer/polymer/lib/utils/html-tag.js';
 
 /**
@@ -46,7 +46,7 @@ Note: announcements are only audible if you have a screen reader enabled.
 @group Iron Elements
 @demo demo/index.html
 */
-export const IronA11yAnnouncer = Polymer$0({
+export const IronA11yAnnouncer = Polymer({
   _template: html`
     <style>
       :host {

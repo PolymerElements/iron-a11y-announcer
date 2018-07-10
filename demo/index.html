@@ -18,57 +18,55 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
   <title>iron-a11y-announcer demo</title>
 
-  <script src="../../../@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
-  <script type="module" src="../../iron-demo-helpers/demo-snippet.js"></script>
-  <script type="module" src="../../iron-demo-helpers/demo-pages-shared-styles.js"></script>
-  <script type="module" src="../../paper-button/paper-button.js"></script>
-  <script type="module" src="./x-announces.js"></script>
-  <script type="module" src="../iron-a11y-announcer.js"></script>
+  <script src="https://unpkg.com/@webcomponents/webcomponentsjs@^2.0.0/webcomponents-loader.js"></script>
+
   <script type="module">
-      import {html} from '@polymer/polymer/lib/utils/html-tag.js';
-      const template = html`
-      <custom-style>
-        <style is="custom-style" include="demo-pages-shared-styles">
-          input {
-            margin-right: 20px;
-          }
-        </style>
-      </custom-style>
-      `;
-      document.body.appendChild(template.content);
+    import '@polymer/iron-demo-helpers/demo-snippet.js';
+    import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+    import '@polymer/paper-button/paper-button.js';
+    import {html} from '@polymer/polymer/lib/utils/html-tag.js';
+    import './x-announces.js';
+
+    const template = html`
+    <custom-style>
+      <style is="custom-style" include="demo-pages-shared-styles">
+        input {
+          margin-right: 20px;
+        }
+      </style>
+    </custom-style>
+    `;
+    document.body.appendChild(template.content);
   </script>
 </head>
 <body>
-  <script type="module">
-    const $_documentContainer = document.createElement('template');
-
-    $_documentContainer.innerHTML =
-        `<div class="vertical-section-container centered">
+  <div class="vertical-section-container centered">
     <p><b>Note</b>: in order to hear the announcements, be sure to turn on your favorite screen reader!</p>
 
     <h4>Announcer used directly on the main document</h4>
     <demo-snippet>
       <template>
         <input id="input" value="Pizza is delicious">
-        <paper-button raised="" onclick="_announce()">Announce</paper-button>
+        <paper-button raised="" onclick="window._announce()">Announce</paper-button>
 
-        <script>
+        <script type="module">
+          import {IronA11yAnnouncer} from '../iron-a11y-announcer.js';
           window.addEventListener('WebComponentsReady', function() {
             // Initialize the announcer.
-            Polymer.IronA11yAnnouncer.requestAvailability();
+            IronA11yAnnouncer.requestAvailability();
 
             // Optional; for testing, set the mode to assertive to announce immediately.
-            Polymer.IronA11yAnnouncer.instance.mode = 'assertive';
+            IronA11yAnnouncer.instance.mode = 'assertive';
           });
 
-          function _announce() {
-            Polymer.IronA11yAnnouncer.instance.fire('iron-announce', {
+          window._announce = function() {
+            IronA11yAnnouncer.instance.fire('iron-announce', {
               text: input.value.trim()
             }, {
               bubbles: true
             });
           }
-        &lt;/script>
+        </script>
       </template>
     </demo-snippet>
 
@@ -79,11 +77,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <x-announces message="This true sentence is false."></x-announces>
         <x-announces message="Are you paying attention?"></x-announces>
       </template>
-    </demo-snippet>
-  </div>`;
-
-    document.body.appendChild($_documentContainer.content);
-  </script>
     </demo-snippet>
   </div>
 </body>

@@ -27,7 +27,7 @@ Polymer({
 
     <span>[[message]]</span>
     <paper-button raised="" on-tap="_onTapAnnounce">Announce</paper-button>
-`,
+  `,
 
   is: 'x-announces',
   hostAttributes: {'aria-hidden': 'true'},
