@@ -98,3 +98,9 @@ open http://127.0.0.1:<port>/demo/
 ```sh
 polymer test --npm
 ```
+
+## Known Issues
+This element doesn't work on Firefox (it doesn't read anything in Voice Over), since
+`aria-live` has been broken since the Quantum redesign (see the [MDN docs demo](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions))
+-- we tested it on Firefox 60, but it doesn't look like a regression, so
+it's probably broken on older versions as well.

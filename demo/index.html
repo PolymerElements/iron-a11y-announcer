@@ -48,10 +48,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <demo-snippet>
       <template>
         <input id="input" value="Pizza is delicious">
-        <paper-button raised="" onclick="window._announce()">Announce</paper-button>
+        <paper-button raised onclick="_announce()">Announce</paper-button>
 
         <script type="module">
           import {IronA11yAnnouncer} from '../iron-a11y-announcer.js';
+
           window.addEventListener('WebComponentsReady', function() {
             // Initialize the announcer.
             IronA11yAnnouncer.requestAvailability();
@@ -77,5 +78,20 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       </template>
     </demo-snippet>
   </div>
+
+  <!-- Hack: on non-module browsers the demo-snippet script doesn't
+    do anything, so add the content here again to make sure the demo works.
+  -->
+  <script type="module">
+    import {IronA11yAnnouncer} from '../iron-a11y-announcer.js';
+    window.addEventListener('WebComponentsReady', function() {
+      IronA11yAnnouncer.requestAvailability();
+      IronA11yAnnouncer.instance.mode = 'assertive';
+    });
+    window._announce = function() {
+      IronA11yAnnouncer.instance.fire('iron-announce',
+          {text: input.value.trim()}, {bubbles: true});
+    }
+  </script>
 </body>
 </html>
