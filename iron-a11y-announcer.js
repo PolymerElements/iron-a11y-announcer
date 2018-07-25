@@ -1,12 +1,18 @@
 /**
 @license
 Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
-This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
-The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
-The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
-Code distributed by Google as part of the polymer project is also
-subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+This code may only be used under the BSD style license found at
+http://polymer.github.io/LICENSE.txt The complete set of authors may be found at
+http://polymer.github.io/AUTHORS.txt The complete set of contributors may be
+found at http://polymer.github.io/CONTRIBUTORS.txt Code distributed by Google as
+part of the polymer project is also subject to an additional IP rights grant
+found at http://polymer.github.io/PATENTS.txt
 */
+import '@polymer/polymer/polymer-legacy.js';
+
+import {Polymer} from '@polymer/polymer/lib/legacy/polymer-fn.js';
+import {html} from '@polymer/polymer/lib/utils/html-tag.js';
+
 /**
 `iron-a11y-announcer` is a singleton element that is intended to add a11y
 to features that require on-demand announcement from screen readers. In
@@ -40,17 +46,7 @@ Note: announcements are only audible if you have a screen reader enabled.
 @group Iron Elements
 @demo demo/index.html
 */
-/*
-  FIXME(polymer-modulizer): the above comments were extracted
-  from HTML and may be out of place here. Review them and
-  then delete this comment!
-*/
-import '@polymer/polymer/polymer-legacy.js';
-
-import { Polymer as Polymer$0 } from '@polymer/polymer/lib/legacy/polymer-fn.js';
-import { html } from '@polymer/polymer/lib/utils/html-tag.js';
-
-export const IronA11yAnnouncer = Polymer$0({
+export const IronA11yAnnouncer = Polymer({
   _template: html`
     <style>
       :host {
@@ -108,8 +104,7 @@ IronA11yAnnouncer.instance = null;
 
 IronA11yAnnouncer.requestAvailability = function() {
   if (!IronA11yAnnouncer.instance) {
-    IronA11yAnnouncer.instance =
-        document.createElement('iron-a11y-announcer');
+    IronA11yAnnouncer.instance = document.createElement('iron-a11y-announcer');
   }
 
   document.body.appendChild(IronA11yAnnouncer.instance);
