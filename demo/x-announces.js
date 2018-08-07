@@ -26,7 +26,7 @@ Polymer({
     </style>
 
     <span>[[message]]</span>
-    <paper-button raised="" on-tap="_onTapAnnounce">Announce</paper-button>
+    <paper-button raised on-tap="_onTapAnnounce">Announce</paper-button>
   `,
 
   is: 'x-announces',
