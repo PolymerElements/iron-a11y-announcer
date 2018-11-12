@@ -55,7 +55,7 @@ export const IronA11yAnnouncer = Polymer({
         clip: rect(0px,0px,0px,0px);
       }
     </style>
-    <div aria-live\$="[[mode]]">[[_text]]</div>
+    <div aria-live$="[[mode]]">[[_text]]</div>
 `,
 
   is: 'iron-a11y-announcer',
