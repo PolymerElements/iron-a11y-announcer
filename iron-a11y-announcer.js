@@ -77,8 +77,7 @@ export const IronA11yAnnouncer = Polymer({
       IronA11yAnnouncer.instance = this;
     }
 
-    document.body.addEventListener(
-        'iron-announce', this._onIronAnnounce.bind(this));
+    document.addEventListener('iron-announce', this._onIronAnnounce.bind(this));
   },
 
   /**
@@ -107,5 +106,5 @@ IronA11yAnnouncer.requestAvailability = function() {
     IronA11yAnnouncer.instance = document.createElement('iron-a11y-announcer');
   }
 
-  document.body.appendChild(IronA11yAnnouncer.instance);
+  document.head.appendChild(IronA11yAnnouncer.instance);
 };
