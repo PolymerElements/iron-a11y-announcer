@@ -43,10 +43,10 @@ Example:
 
 Note: announcements are only audible if you have a screen reader enabled.
 
-@group Iron Elements
 @demo demo/index.html
 */
 export const IronA11yAnnouncer = Polymer({
+  /** @override */
   _template: html`
     <style>
       :host {
@@ -72,6 +72,7 @@ export const IronA11yAnnouncer = Polymer({
     _text: {type: String, value: ''}
   },
 
+  /** @override */
   created: function() {
     if (!IronA11yAnnouncer.instance) {
       IronA11yAnnouncer.instance = this;
