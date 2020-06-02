@@ -69,7 +69,13 @@ export const IronA11yAnnouncer = Polymer({
      */
     mode: {type: String, value: 'polite'},
 
-    _text: {type: String, value: ''}
+    /**
+     * The timeout on refreshing the announcement text. Larger timeouts are
+     * needed for certain screen readers to re-announce the same message.
+     */
+    timeout: {type: Number, value: 150},
+
+    _text: {type: String, value: ''},
   },
 
   /** @override */
@@ -90,7 +96,7 @@ export const IronA11yAnnouncer = Polymer({
     this._text = '';
     this.async(function() {
       this._text = text;
-    }, 100);
+    }, this.timeout);
   },
 
   _onIronAnnounce: function(event) {
@@ -107,5 +113,5 @@ IronA11yAnnouncer.requestAvailability = function() {
     IronA11yAnnouncer.instance = document.createElement('iron-a11y-announcer');
   }
 
-  document.head.appendChild(IronA11yAnnouncer.instance);
+  document.body.appendChild(IronA11yAnnouncer.instance);
 };
