@@ -113,5 +113,12 @@ IronA11yAnnouncer.requestAvailability = function() {
     IronA11yAnnouncer.instance = document.createElement('iron-a11y-announcer');
   }
 
-  document.body.appendChild(IronA11yAnnouncer.instance);
+  if (document.body) {
+    document.body.appendChild(IronA11yAnnouncer.instance);
+  } else {
+    document.addEventListener('load', function() {
+      console.log('load');
+      document.body.appendChild(IronA11yAnnouncer.instance);
+    });
+  }
 };
