@@ -117,7 +117,6 @@ IronA11yAnnouncer.requestAvailability = function() {
     document.body.appendChild(IronA11yAnnouncer.instance);
   } else {
     document.addEventListener('load', function() {
-      console.log('load');
       document.body.appendChild(IronA11yAnnouncer.instance);
     });
   }
