@@ -22,8 +22,7 @@
     "webmat": "^0.2.0"
   },
   "scripts": {
-    "format": "webmat",
-    "prepare": "npm run generate-types"
+    "format": "webmat"
   },
   "version": "3.1.0",
   "main": "iron-a11y-announcer.js",
