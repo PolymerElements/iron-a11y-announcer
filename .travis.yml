@@ -16,7 +16,7 @@ env:
 node_js: node
 addons:
   firefox: latest
-  chrome: stable
+  chrome: beta
 script:
   - xvfb-run polymer test --module-resolution=node --npm
   - >-
