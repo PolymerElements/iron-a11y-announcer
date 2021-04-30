@@ -1,6 +1,7 @@
 language: node_js
 sudo: 'false'
 before_script:
+  - npm install -g npm@6
   - npm install -g polymer-cli
   - git checkout package-lock.json
   - >-
@@ -21,7 +22,7 @@ script:
   - >-
     if [ "${TRAVIS_PULL_REQUEST}" = "false" ]; then polymer test
     --module-resolution=node --npm -s 'default'; fi
-dist: trusty
+dist: xenial
 cache:
   directories:
     - node_modules
