@@ -16,13 +16,13 @@ env:
 node_js: node
 addons:
   firefox: latest
-  chrome: beta
+  chrome: stable
 script:
   - xvfb-run polymer test --module-resolution=node --npm
   - >-
     if [ "${TRAVIS_PULL_REQUEST}" = "false" ]; then polymer test
     --module-resolution=node --npm -s 'default'; fi
-dist: trusty
+dist: xenial
 cache:
   directories:
     - node_modules
