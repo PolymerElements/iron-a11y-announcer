@@ -24,7 +24,7 @@
   "scripts": {
     "format": "webmat"
   },
-  "version": "3.1.0",
+  "version": "3.2.0",
   "main": "iron-a11y-announcer.js",
   "author": "The Polymer Authors",
   "dependencies": {
