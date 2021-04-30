@@ -15,7 +15,7 @@ env:
 node_js: "14.16.1"
 addons:
   firefox: latest
-  chrome: stable
+  chrome: latest
 script:
   - xvfb-run polymer test --module-resolution=node --npm
   - >-
