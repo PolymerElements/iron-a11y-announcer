@@ -1,4 +1,6 @@
 language: node_js
+node_js:
+  - "14.0"
 sudo: 'false'
 before_script:
   - npm install -g polymer-cli
